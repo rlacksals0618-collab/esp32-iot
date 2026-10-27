@@ -1,0 +1,9 @@
+# Python
+.venv/
+__pycache__/
+.pytest_cache/
+# 비밀 값
+.env
+firmware/esp32_iot/secrets.h
+# Vercel
+.vercel/

@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>XIAO 대시보드</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- 로그인 / 회원가입 -->
+  <main id="auth-view" class="auth" hidden>
+    <section class="auth-card">
+      <div class="brand"><span class="brand-mark">S3</span> XIAO 대시보드</div>
+      <p class="muted">XIAO ESP32S3의 센서값을 보고 LED를 제어합니다.</p>
+      <div class="tabs" role="tablist">
+        <button class="tab on" data-mode="login" role="tab">로그인</button>
+        <button class="tab" data-mode="signup" role="tab">회원가입</button>
+      </div>
+      <form id="auth-form" novalidate>
+        <label for="email">이메일</label>
+        <input id="email" name="email" type="email" autocomplete="email" required>
+        <label for="password">비밀번호 <span class="muted small" id="pw-hint" hidden>8자 이상</span></label>
+        <input id="password" name="password" type="password" autocomplete="current-password" required minlength="8">
+        <p class="error" id="auth-error" role="alert"></p>
+        <button class="btn primary wide" id="auth-submit" type="submit">로그인</button>
+      </form>
+    </section>
+  </main>
+
+  <!-- 대시보드 -->
+  <div id="app-view" hidden>
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark">S3</span> XIAO 대시보드</div>
+      <div class="topbar-right">
+        <span class="server-status" id="server-status" title="백엔드 서버 상태"><i></i><span>확인 중</span></span>
+        <span class="muted small" id="user-email"></span>
+        <button class="btn ghost sm" id="logout">로그아웃</button>
+      </div>
+    </header>
+
+    <div class="layout">
+      <aside class="sidebar">
+        <h2 class="side-title">내 기기</h2>
+        <ul class="device-list" id="device-list"></ul>
+        <form class="add-device" id="add-device">
+          <label for="device-name" class="small muted">새 기기 등록</label>
+          <div class="row">
+            <input id="device-name" placeholder="예: 책상 XIAO" maxlength="50" required>
+            <button class="btn primary sm" type="submit">등록</button>
+          </div>
+        </form>
+      </aside>
+
+      <main class="panel" id="panel"></main>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <span class="muted small">서버: <code id="api-base"></code></span>
+    <button class="link small" id="change-api">서버 주소 변경</button>
+  </footer>
+
+  <div class="toast" id="toast" role="status"></div>
+
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

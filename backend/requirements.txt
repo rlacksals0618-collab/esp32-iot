@@ -1,0 +1,4 @@
+fastapi>=0.115
+uvicorn[standard]>=0.30
+supabase>=2.15
+email-validator>=2.1
